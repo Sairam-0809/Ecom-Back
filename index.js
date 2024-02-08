@@ -6,10 +6,12 @@ const data=require('./Routes/userRoutes')
 const{dbName,connection}=require('./Config/db')
  const UserCollection=dbName.collection("E-commerce");
 const route=require("./Router/productRouting")
+const cors=require("cors")
 const app=express();
 app.use("/route",route);
 app.use(express.json());
-
+app.use(express.urlencoded({extended:true}))
+app.use(cors({origin:"*"}))
 const secretKey="sairam";
 const saltRound=10;
 // let arr=[];
